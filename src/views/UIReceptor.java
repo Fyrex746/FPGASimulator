@@ -25,6 +25,7 @@ public class UIReceptor extends JPanel{
 		setPreferredSize(d);
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		this.receptor = receptor;
+		receptor.ui = this;
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -36,6 +37,9 @@ public class UIReceptor extends JPanel{
 		return receptor;
 	}
 	
+	public void update() {
+		repaint();
+	}
 	
 
 }

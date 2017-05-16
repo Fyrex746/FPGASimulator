@@ -4,7 +4,7 @@ import views.UIGenerator;
 
 public class Generator {
 
-	public UIGenerator ui;
+	public UIGenerator ui = null;
 	private String label = "";
 	private String value = "0";
 	
@@ -31,6 +31,7 @@ public class Generator {
 		}else {
 			value = "0";
 		}
+		updateUI();
 	}
 	
 	

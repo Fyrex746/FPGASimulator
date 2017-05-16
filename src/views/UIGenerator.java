@@ -5,8 +5,6 @@ import model.Generator;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -21,7 +19,6 @@ public class UIGenerator extends JPanel implements MouseListener{
 	
 	public UIGenerator() {
 		this(new Generator());
-		generator.ui = this;
 	}
 	
 	public UIGenerator(Generator generator) {
@@ -29,6 +26,7 @@ public class UIGenerator extends JPanel implements MouseListener{
 		setPreferredSize(d);
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		this.generator = generator;
+		generator.ui = this;
 		addMouseListener(this);
 	}
 	
