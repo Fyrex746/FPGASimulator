@@ -1,9 +1,10 @@
 package model;
 
+import java.util.ArrayList;
+
 import views.UIReceptor;
 
-public class Receptor {
-	public UIReceptor ui = null;
+public class Receptor implements Observable{
 	private String value = "0";
 	
 	public Receptor() {}
@@ -18,12 +19,26 @@ public class Receptor {
 
 	public void setValue(String value) {
 		this.value = value;
-	}
+		notifyObservator();
+	}	
 	
-	public void updateUI() {
-		if(ui != null) {
-			ui.update();
-		}
+	
+	
+	//Observer pattern
+	private ArrayList<Observator> observators = new ArrayList<Observator>();
+
+	public void addObservator(Observator o) {
+		observators.add(o);
 	}
 
+	public void deleteObservator(Observator o) {
+		observators.remove(o);
+	}
+
+	public void notifyObservator() {
+		for(Observator o: observators) {
+			o.update();
+		}
+	}
+	
 }

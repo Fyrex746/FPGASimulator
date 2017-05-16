@@ -1,27 +1,27 @@
 package model;
 
+import java.util.ArrayList;
+
 import views.UIGenerator;
 
-public class Generator {
+public class Generator implements Observable{
 
-	public UIGenerator ui = null;
 	private String label = "";
 	private String value = "0";
 	
 	
 	
 	public Generator() {
-		this(null, "", "0");
+		this("", "0");
 	}
 	
-	public Generator(UIGenerator ui, String label, String value) {
-		this.ui = ui;
+	public Generator(String label, String value) {
 		this.label = label;
 		this.value = value;
 	}
 	
 	public Generator(String value) {
-		this(null,"",value);
+		this("",value);
 	}
 
 	
@@ -31,7 +31,7 @@ public class Generator {
 		}else {
 			value = "0";
 		}
-		updateUI();
+		notifyObservator();
 	}
 	
 	
@@ -41,7 +41,7 @@ public class Generator {
 
 	public void setLabel(String label) {
 		this.label = label;
-		updateUI();
+		notifyObservator();
 	}
 
 	public String getValue() {
@@ -50,12 +50,26 @@ public class Generator {
 
 	public void setValue(String value) {
 		this.value = value;
-		updateUI();
+		notifyObservator();
 	}
 	
-	public void updateUI() {
-		if(ui != null) {
-			ui.update();
+	
+	
+	
+	//Observer pattern
+	private ArrayList<Observator> observators = new ArrayList<Observator>();
+
+	public void addObservator(Observator o) {
+		observators.add(o);
+	}
+
+	public void deleteObservator(Observator o) {
+		observators.remove(o);
+	}
+
+	public void notifyObservator() {
+		for(Observator o: observators) {
+			o.update();
 		}
 	}
 

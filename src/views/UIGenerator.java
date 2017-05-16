@@ -1,6 +1,7 @@
 package views;
 
 import model.Generator;
+import model.Observator;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,11 +12,11 @@ import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-public class UIGenerator extends JPanel implements MouseListener{
+public class UIGenerator extends JPanel implements Observator,MouseListener{
 	
-	public Generator generator;
-	private int height = 20;
-	private int width = 20;
+	private final Generator generator;
+	public static final int height = 20;
+	public static final int width = 20;
 	
 	public UIGenerator() {
 		this(new Generator());
@@ -26,7 +27,7 @@ public class UIGenerator extends JPanel implements MouseListener{
 		setPreferredSize(d);
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		this.generator = generator;
-		generator.ui = this;
+		generator.addObservator(this);
 		addMouseListener(this);
 	}
 	
@@ -45,7 +46,6 @@ public class UIGenerator extends JPanel implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
 		generator.switchValue();
 	}
 

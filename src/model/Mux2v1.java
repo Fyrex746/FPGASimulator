@@ -1,12 +1,17 @@
 package model;
 
-public class Mux2v1 {
+import java.util.ArrayList;
+
+public class Mux2v1 implements Observable{
 
 	private String a = "0";
 	private String b = "0";
 	private String s = "0";
 	private String o = "0";
 
+	
+	
+	
 	public Mux2v1() {
 		// TODO Auto-generated constructor stub
 	}
@@ -17,9 +22,12 @@ public class Mux2v1 {
 		}else {
 			o = b;
 		}
+		notifyObservator();
 	}
 
 
+	
+	
 	//get, set
 	public String getA() {
 		return a;
@@ -55,4 +63,23 @@ public class Mux2v1 {
 		return o;
 	}
 
+	
+	
+	
+	//Observer pattern
+	private ArrayList<Observator> observators = new ArrayList<Observator>();
+
+	public void addObservator(Observator o) {
+		observators.add(o);
+	}
+
+	public void deleteObservator(Observator o) {
+		observators.remove(o);
+	}
+
+	public void notifyObservator() {
+		for(Observator o: observators) {
+			o.update();
+		}
+	}
 }
