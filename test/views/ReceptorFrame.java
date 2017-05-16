@@ -43,6 +43,7 @@ public class ReceptorFrame extends JFrame implements Observator{
 	public void update() {
 		String v = uigenerator.getGenerator().getValue();
 		uireceptor.getreceptor().setValue(v);
+		repaint();
 		
 	}
 
