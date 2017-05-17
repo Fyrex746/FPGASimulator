@@ -23,13 +23,16 @@ public class UIGenerator extends JPanel implements Observator,MouseListener{
 	}
 	
 	public UIGenerator(Generator generator) {
+		this.generator = generator;
+		generator.addObservator(this);
+		
 		Dimension d = new Dimension(width, height);
 		setPreferredSize(d);
 		setBorder(BorderFactory.createLineBorder(Color.black));
-		this.generator = generator;
-		generator.addObservator(this);
+		
 		addMouseListener(this);
 	}
+	
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);

@@ -1,8 +1,9 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Lut3v1 {
+public class Lut3v1 implements Observable{
 
 	private String inputs = "000";
 	private String output = "0";
@@ -65,5 +66,22 @@ public class Lut3v1 {
 	}
 
 	
+	
+	//Observer pattern
+	private ArrayList<Observator> observators = new ArrayList<Observator>();
+
+	public void addObservator(Observator o) {
+		observators.add(o);
+	}
+
+	public void deleteObservator(Observator o) {
+		observators.remove(o);
+	}
+
+	public void notifyObservator() {
+		for(Observator o: observators) {
+			o.update();
+		}
+	}
 
 }
