@@ -12,12 +12,14 @@ import model.Receptor;
 
 public class Mux2v1Frame extends JFrame implements Observator{
 	
+	//Model
 	Mux2v1 mux = new Mux2v1();
 	Generator g1 = new Generator();
 	Generator g2 = new Generator();
 	Generator g3 = new Generator();
 	Receptor r = new Receptor();
 	
+	//View
 	UIMux2v1 uimux = new UIMux2v1(mux);
 	UIGenerator uig1 = new UIGenerator(g1);
 	UIGenerator uig2 = new UIGenerator(g2);
@@ -28,12 +30,15 @@ public class Mux2v1Frame extends JFrame implements Observator{
 
 	public Mux2v1Frame() {
 		super();
+		
+		//config frame
 		setTitle("Test Mux2v1");
 		setSize(500, 500);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBackground(Color.white);
 		
+		//config content panel
 		JPanel contentPanel = new JPanel();
 		setContentPane(contentPanel);
 		contentPanel.add(uig1);
@@ -42,7 +47,7 @@ public class Mux2v1Frame extends JFrame implements Observator{
 		contentPanel.add(uimux);
 		contentPanel.add(uir);
 		
-		
+		//Place component
 		contentPanel.setLayout(null);
 		uig1.setBounds(50, 20,UIGenerator.width, UIGenerator.height);
 		uig2.setBounds(50, 60,UIGenerator.width, UIGenerator.height);
@@ -50,10 +55,13 @@ public class Mux2v1Frame extends JFrame implements Observator{
 		uig3.setBounds(102, 120,UIGenerator.width, UIGenerator.height);
 		uir.setBounds(150, 40,UIReceptor.width, UIReceptor.height);
 		
+		//Add Observer
 		g1.addObservator(this);
 		g2.addObservator(this);
 		g3.addObservator(this);
 		mux.addObservator(this);
+		
+		//update UI
 		update();
 		repaint();
 	}
