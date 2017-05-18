@@ -7,9 +7,9 @@ import java.awt.Polygon;
 import javax.swing.JPanel;
 
 import model.Mux2v1;
-import model.Observator;
+import model.Observer;
 
-public class UIMux2v1 extends JPanel implements Observator{
+public class UIMux2v1 extends JPanel implements Observer{
 
 	//Properties
 	private final Mux2v1 mux;
@@ -26,7 +26,7 @@ public class UIMux2v1 extends JPanel implements Observator{
 
 	public UIMux2v1(Mux2v1 mux) {
 		this.mux = mux;
-		mux.addObservator(this);
+		mux.addObserver(this);
 		
 		Dimension d = new Dimension(width, height);
 		setPreferredSize(d);

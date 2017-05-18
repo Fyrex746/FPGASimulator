@@ -1,6 +1,6 @@
 package views;
 
-import model.Observator;
+import model.Observer;
 import model.Receptor;
 
 import java.awt.Color;
@@ -10,7 +10,7 @@ import java.awt.Graphics;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-public class UIReceptor extends JPanel implements Observator{
+public class UIReceptor extends JPanel implements Observer{
 	
 	//Properties
 	private final Receptor receptor;
@@ -25,7 +25,7 @@ public class UIReceptor extends JPanel implements Observator{
 	
 	public UIReceptor(Receptor receptor) {
 		this.receptor = receptor;
-		receptor.addObservator(this);
+		receptor.addObserver(this);
 		
 		Dimension d = new Dimension(width, height);
 		setPreferredSize(d);

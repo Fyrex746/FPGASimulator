@@ -24,22 +24,23 @@ public class Receptor implements Observable{
 	}
 
 	public void setValue(String value) {
+		if(this.value == value){return;}
 		this.value = value;
-		notifyObservator();
+		notifyObserver();
 	}	
 	
 	
 	
 	//Observable pattern
-	private ArrayList<Observator> observators = new ArrayList<Observator>();
-	public void addObservator(Observator o) {
+	private ArrayList<Observer> observators = new ArrayList<Observer>();
+	public void addObserver(Observer o) {
 		observators.add(o);
 	}
-	public void deleteObservator(Observator o) {
+	public void deleteObserver(Observer o) {
 		observators.remove(o);
 	}
-	public void notifyObservator() {
-		for(Observator o: observators) {
+	public void notifyObserver() {
+		for(Observer o: observators) {
 			o.update();
 		}
 	}

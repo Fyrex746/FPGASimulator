@@ -8,10 +8,10 @@ import javax.swing.JPanel;
 import model.DLatch;
 import model.Generator;
 import model.Mux2v1;
-import model.Observator;
+import model.Observer;
 import model.Receptor;
 
-public class DLatchFrame extends JFrame implements Observator{
+public class DLatchFrame extends JFrame implements Observer{
 
 	//Model
 		DLatch latch = new DLatch();
@@ -51,8 +51,8 @@ public class DLatchFrame extends JFrame implements Observator{
 		uir.setBounds(150, 40,UIReceptor.width, UIReceptor.height);
 		
 		//Add Observer
-		g1.addObservator(this);
-		g2.addObservator(this);
+		g1.addObserver(this);
+		g2.addObserver(this);
 		
 		//update UI
 		update();

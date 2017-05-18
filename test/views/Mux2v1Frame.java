@@ -7,10 +7,10 @@ import javax.swing.JPanel;
 
 import model.Generator;
 import model.Mux2v1;
-import model.Observator;
+import model.Observer;
 import model.Receptor;
 
-public class Mux2v1Frame extends JFrame implements Observator{
+public class Mux2v1Frame extends JFrame implements Observer{
 	
 	//Models
 	Mux2v1 mux = new Mux2v1();
@@ -56,9 +56,9 @@ public class Mux2v1Frame extends JFrame implements Observator{
 		uir.setBounds(150, 40,UIReceptor.width, UIReceptor.height);
 		
 		//Add Observer
-		g1.addObservator(this);
-		g2.addObservator(this);
-		g3.addObservator(this);
+		g1.addObserver(this);
+		g2.addObserver(this);
+		g3.addObserver(this);
 		
 		//update UI
 		update();

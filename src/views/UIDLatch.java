@@ -8,9 +8,9 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import model.DLatch;
-import model.Observator;
+import model.Observer;
 
-public class UIDLatch extends JPanel implements Observator{
+public class UIDLatch extends JPanel implements Observer{
 	
 	//Properties
 	private DLatch latch;
@@ -24,7 +24,7 @@ public class UIDLatch extends JPanel implements Observator{
 	
 	public UIDLatch(DLatch latch) {
 		this.latch = latch;
-		latch.addObservator(this);
+		latch.addObserver(this);
 		Dimension d = new Dimension(width, height);
 		setPreferredSize(d);
 	}

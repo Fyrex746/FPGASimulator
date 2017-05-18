@@ -6,10 +6,10 @@ import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import model.Observator;
+import model.Observer;
 import model.UnitCell;
 
-public class UIUnitCell extends JPanel implements Observator{
+public class UIUnitCell extends JPanel implements Observer{
 
 	//Properties
 	private UnitCell uc = new UnitCell();
@@ -37,7 +37,7 @@ public class UIUnitCell extends JPanel implements Observator{
 	
 	public UIUnitCell(UnitCell uc) {
 		this.uc = uc;
-		uc.addObservator(this);
+		uc.addObserver(this);
 		
 		Dimension d = new Dimension(length, length);
 		setPreferredSize(d);

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 
-public class Lut3v1 implements Observator{
+public class Lut3v1 implements Observer,Observable{
 
 	//Properties
 	private String inputs = "000";
@@ -15,18 +15,23 @@ public class Lut3v1 implements Observator{
 	//Constructor
 	public Lut3v1() {
 		table = new TruthTable();
-		table.addObservator(this);
+		table.addObserver(this);
 	}
 	
 	//Method
 	private void calculateOutput() {
-		output = table.getOutputForInputs(inputs);
+		String newOutput = table.getOutputForInputs(inputs);
+		if(output != newOutput){
+			output = newOutput;
+			//notifyObservator();
+		}
 	}
 	
 
 	
 	//get set
 	public void setInputs(String inputs) {
+		if(this.inputs == inputs){return;}
 		this.inputs = inputs;
 		calculateOutput();
 	}
@@ -50,15 +55,15 @@ public class Lut3v1 implements Observator{
 	
 	
 	//Observable pattern
-	private ArrayList<Observator> observators = new ArrayList<Observator>();
-	public void addObservator(Observator o) {
+	private ArrayList<Observer> observators = new ArrayList<Observer>();
+	public void addObserver(Observer o) {
 		observators.add(o);
 	}
-	public void deleteObservator(Observator o) {
+	public void deleteObserver(Observer o) {
 		observators.remove(o);
 	}
-	public void notifyObservator() {
-		for(Observator o: observators) {
+	public void notifyObserver() {
+		for(Observer o: observators) {
 			o.update();
 		}
 	}

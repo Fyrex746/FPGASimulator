@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Mux2v1 implements Observable{
 
+	//Properties
 	private String a = "0";
 	private String b = "0";
 	private String s = "0";
@@ -11,18 +12,25 @@ public class Mux2v1 implements Observable{
 
 	
 	
-	
+	//Constructor
 	public Mux2v1() {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	//Method
 	private void calculateOutputs() {
+		String newO;
 		if(s=="0") {
-			o = a;
+			newO = a;
 		}else {
-			o = b;
+			newO = b;
 		}
-		notifyObservator();
+		
+		if(o != newO){
+			o = newO;
+			notifyObserver();
+		}
 	}
 
 
@@ -34,7 +42,7 @@ public class Mux2v1 implements Observable{
 	}
 
 	public void setA(String a) {
-		if(a == this.a) {return;}
+		if(this.a == a) {return;}
 		this.a = a;
 		calculateOutputs();
 	}
@@ -44,7 +52,7 @@ public class Mux2v1 implements Observable{
 	}
 
 	public void setB(String b) {
-		if(b == this.b) {return;}
+		if(this.b == b) {return;}
 		this.b = b;
 		calculateOutputs();
 	}
@@ -54,7 +62,7 @@ public class Mux2v1 implements Observable{
 	}
 
 	public void setS(String s) {
-		if(s == this.s) {return;}
+		if(this.s == s) {return;}
 		this.s = s;
 		calculateOutputs();
 	}
@@ -67,15 +75,15 @@ public class Mux2v1 implements Observable{
 	
 	
 	//Observable pattern
-	private ArrayList<Observator> observators = new ArrayList<Observator>();
-	public void addObservator(Observator o) {
+	private ArrayList<Observer> observators = new ArrayList<Observer>();
+	public void addObserver(Observer o) {
 		observators.add(o);
 	}
-	public void deleteObservator(Observator o) {
+	public void deleteObserver(Observer o) {
 		observators.remove(o);
 	}
-	public void notifyObservator() {
-		for(Observator o: observators) {
+	public void notifyObserver() {
+		for(Observer o: observators) {
 			o.update();
 		}
 	}

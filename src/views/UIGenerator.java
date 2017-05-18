@@ -1,7 +1,7 @@
 package views;
 
 import model.Generator;
-import model.Observator;
+import model.Observer;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,7 +12,7 @@ import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-public class UIGenerator extends JPanel implements Observator,MouseListener{
+public class UIGenerator extends JPanel implements Observer,MouseListener{
 	
 	//Properties
 	private final Generator generator;
@@ -27,7 +27,7 @@ public class UIGenerator extends JPanel implements Observator,MouseListener{
 	
 	public UIGenerator(Generator generator) {
 		this.generator = generator;
-		generator.addObservator(this);
+		generator.addObserver(this);
 		addMouseListener(this);
 		
 		Dimension d = new Dimension(width, height);

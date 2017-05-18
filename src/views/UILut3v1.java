@@ -10,11 +10,11 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import model.Lut3v1;
-import model.Observator;
+import model.Observer;
 
 
 
-public class UILut3v1 extends JPanel implements Observator, MouseListener{
+public class UILut3v1 extends JPanel implements Observer, MouseListener{
 
 	//Properties
 	private Lut3v1 lut;
@@ -33,7 +33,7 @@ public class UILut3v1 extends JPanel implements Observator, MouseListener{
 	
 	public UILut3v1(Lut3v1 lut){
 		this.lut = lut;
-		lut.addObservator(this);
+		lut.addObserver(this);
 		addMouseListener(this);
 		
 		Dimension d = new Dimension(width, height);

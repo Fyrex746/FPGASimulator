@@ -5,9 +5,9 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import model.Observator;
+import model.Observer;
 
-public class ReceptorFrame extends JFrame implements Observator{
+public class ReceptorFrame extends JFrame implements Observer{
 
 	UIGenerator uigenerator = new UIGenerator();
 	UIReceptor uireceptor = new UIReceptor();
@@ -29,7 +29,7 @@ public class ReceptorFrame extends JFrame implements Observator{
 		uireceptor.setBounds(100, 50, 20, 20);
 		setContentPane(contentPanel);
 		
-		uigenerator.getGenerator().addObservator(this);
+		uigenerator.getGenerator().addObserver(this);
 		update();
 		
 		repaint();

@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class UnitCell implements Observator, Observable{
+public class UnitCell implements Observer, Observable{
 
 	//Properties
 	private String lutInputs = "000";
@@ -18,12 +18,15 @@ public class UnitCell implements Observator, Observable{
 	
 	//Constructor
 	public UnitCell() {
-		gen.addObservator(this);
+		lut.addObserver(this);
+		mux.addObserver(this);
+		gen.addObserver(this);
+		latch.addObserver(this);
 		update();
 	}
 
 
-	@Override
+	//Observer
 	public void update() {
 		lut.setInputs(lutInputs);
 		latch.setD(lut.getOutput());
@@ -32,7 +35,7 @@ public class UnitCell implements Observator, Observable{
 		mux.setB(latch.getQ());
 		mux.setS(gen.getValue());
 		output = mux.getO();
-		notifyObservator();
+		notifyObserver();
 	}
 
 
@@ -77,15 +80,15 @@ public class UnitCell implements Observator, Observable{
 	
 	
 	//Observable pattern
-	private ArrayList<Observator> observators = new ArrayList<Observator>();
-	public void addObservator(Observator o) {
+	private ArrayList<Observer> observators = new ArrayList<Observer>();
+	public void addObserver(Observer o) {
 		observators.add(o);
 	}
-	public void deleteObservator(Observator o) {
+	public void deleteObserver(Observer o) {
 		observators.remove(o);
 	}
-	public void notifyObservator() {
-		for(Observator o: observators) {
+	public void notifyObserver() {
+		for(Observer o: observators) {
 			o.update();
 		}
 	}

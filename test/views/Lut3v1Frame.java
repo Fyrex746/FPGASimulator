@@ -7,10 +7,10 @@ import javax.swing.JPanel;
 import model.Generator;
 import model.Lut3v1;
 import model.Mux2v1;
-import model.Observator;
+import model.Observer;
 import model.Receptor;
 
-public class Lut3v1Frame extends JFrame implements Observator{
+public class Lut3v1Frame extends JFrame implements Observer{
 
 	//Model
 	Lut3v1 lut = new Lut3v1();
@@ -54,10 +54,10 @@ public class Lut3v1Frame extends JFrame implements Observator{
 		uir.setBounds(200, 60,UIReceptor.width, UIReceptor.height);
 		
 		//Add Observer
-		g1.addObservator(this);
-		g2.addObservator(this);
-		g3.addObservator(this);
-		lut.getTruthTable().addObservator(this);
+		g1.addObserver(this);
+		g2.addObserver(this);
+		g3.addObserver(this);
+		lut.getTruthTable().addObserver(this);
 		
 		//update UI
 		update();

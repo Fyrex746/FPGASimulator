@@ -6,11 +6,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import model.Generator;
-import model.Observator;
+import model.Observer;
 import model.Receptor;
 import model.UnitCell;
 
-public class UnitCellFrame extends JFrame implements Observator{
+public class UnitCellFrame extends JFrame implements Observer{
 
 	//Models
 	UnitCell uc = new UnitCell();
@@ -59,10 +59,10 @@ public class UnitCellFrame extends JFrame implements Observator{
 		uir.setBounds(500, 80,UIReceptor.width, UIReceptor.height);
 		
 		//Add Observer
-		g1.addObservator(this);
-		g2.addObservator(this);
-		g3.addObservator(this);
-		clk.addObservator(this);
+		g1.addObserver(this);
+		g2.addObserver(this);
+		g3.addObserver(this);
+		clk.addObserver(this);
 		
 		//update UI
 		update();

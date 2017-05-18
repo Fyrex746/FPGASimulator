@@ -20,6 +20,7 @@ public class DLatch implements Observable{
 	}
 
 	public void setD(String d) {
+		if(this.d == d){return;}
 		this.d = d;
 	}
 
@@ -28,6 +29,7 @@ public class DLatch implements Observable{
 	}
 
 	public void setH(String h) {
+		if(this.h == h){return;}
 		//if rising edge
 		if(this.h=="0" && h=="1") {
 			q = d;
@@ -41,15 +43,15 @@ public class DLatch implements Observable{
 	
 	
 	//Observable pattern
-	private ArrayList<Observator> observators = new ArrayList<Observator>();
-	public void addObservator(Observator o) {
+	private ArrayList<Observer> observators = new ArrayList<Observer>();
+	public void addObserver(Observer o) {
 		observators.add(o);
 	}
-	public void deleteObservator(Observator o) {
+	public void deleteObserver(Observer o) {
 		observators.remove(o);
 	}
-	public void notifyObservator() {
-		for(Observator o: observators) {
+	public void notifyObserver() {
+		for(Observer o: observators) {
 			o.update();
 		}
 	}
