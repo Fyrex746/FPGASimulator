@@ -1,14 +1,20 @@
 package model;
 
-public class DLatch {
+import java.util.ArrayList;
 
+public class DLatch implements Observable{
+
+	//Properties
 	private String d = "0";
 	private String h = "0";
 	private String q = "0";
 	
+	
+	//Constructor
 	public DLatch() {}
 	
 	
+	//Get Set
 	public String getD() {
 		return d;
 	}
@@ -33,4 +39,18 @@ public class DLatch {
 		return q;
 	}
 	
+	
+	//Observable pattern
+	private ArrayList<Observator> observators = new ArrayList<Observator>();
+	public void addObservator(Observator o) {
+		observators.add(o);
+	}
+	public void deleteObservator(Observator o) {
+		observators.remove(o);
+	}
+	public void notifyObservator() {
+		for(Observator o: observators) {
+			o.update();
+		}
+	}
 }
