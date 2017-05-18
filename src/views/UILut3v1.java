@@ -3,6 +3,8 @@ package views;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -12,7 +14,7 @@ import model.Observator;
 
 
 
-public class UILut3v1 extends JPanel implements Observator{
+public class UILut3v1 extends JPanel implements Observator, MouseListener{
 
 	private Lut3v1 lut;
 	
@@ -31,6 +33,7 @@ public class UILut3v1 extends JPanel implements Observator{
 	public UILut3v1(Lut3v1 lut){
 		this.lut = lut;
 		lut.addObservator(this);
+		addMouseListener(this);
 		
 		Dimension d = new Dimension(width, height);
 		setPreferredSize(d);
@@ -39,14 +42,37 @@ public class UILut3v1 extends JPanel implements Observator{
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawLine(leftCellWidth-1, 0, leftCellWidth-1, height-1);
-		for (int i = 1; i < 8; i++) {
-			g.drawLine(0, (cellheight-1)*i, width-1, (cellheight-1)*i);
+		g.drawLine(leftCellWidth, 0, leftCellWidth, height);
+		for (int i=1; i<8; i++) {
+			g.drawLine(0, cellheight*i, width-1, cellheight*i);
+		}
+		for(int i=0; i<8; i++){
+			String input = Integer.toBinaryString(8 | i).substring(1);
+			String output = lut.getOutputForInputs(input);
+			g.drawString(input, 15, cellheight*(i+1)-5 );
+			g.drawString(output, leftCellWidth+6, cellheight*(i+1)-5 );
 		}
 	}
 	
 	public void update(){
 		repaint();
 	}
+
+	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		int x = e.getX();
+		int y = e.getY();
+		if(leftCellWidth<=x && x<= width && 0<=y && y<= height){
+			int row = y/cellheight;
+			String bin = Integer.toBinaryString(8 | row).substring(1);
+			lut.switchOutputForInputs(bin);
+		}
+	}
+
+	public void mouseEntered(MouseEvent e) {}
+	public void mouseExited(MouseEvent e) {}
+	public void mousePressed(MouseEvent e) {}
+	public void mouseReleased(MouseEvent e) {}
 	
 }

@@ -18,6 +18,7 @@ public class Lut3v1 implements Observable{
 	
 	private void calculateOutput() {
 		output = truthTable.get(inputs);
+		notifyObservator();
 	}
 	
 	
@@ -43,11 +44,25 @@ public class Lut3v1 implements Observable{
 			throw new Exception("Incorect output size");
 		}
 		truthTable.put(inputs, output);
+		calculateOutput();
+		notifyObservator();
+	}
+	
+	public void switchOutputForInputs(String inputs){
+		if(truthTable.get(inputs) == "1"){
+			truthTable.put(inputs, "0");
+		}else{
+			truthTable.put(inputs, "1");
+		}
+		calculateOutput();
+		notifyObservator();
 	}
 	
 	public HashMap<String, String> getTruthTable() {
 		return truthTable;
 	}
+	
+	
 	
 	
 	
