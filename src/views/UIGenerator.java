@@ -14,10 +14,13 @@ import javax.swing.JPanel;
 
 public class UIGenerator extends JPanel implements Observator,MouseListener{
 	
+	//Properties
 	private final Generator generator;
 	public static final int height = 20;
 	public static final int width = 20;
 	
+	
+	//Constructors
 	public UIGenerator() {
 		this(new Generator());
 	}
@@ -25,45 +28,41 @@ public class UIGenerator extends JPanel implements Observator,MouseListener{
 	public UIGenerator(Generator generator) {
 		this.generator = generator;
 		generator.addObservator(this);
+		addMouseListener(this);
 		
 		Dimension d = new Dimension(width, height);
 		setPreferredSize(d);
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		
-		addMouseListener(this);
 	}
 	
 	
+	//Graphics
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawString(generator.getValue(), 5, 15);
 	}
 
+	
+	//Get
 	public Generator getGenerator() {
 		return generator;
 	}
 
+	
+	//Observator
 	public void update() {
 		repaint();
 	}
 
-	@Override
+	
+	//Mouse Listener
 	public void mouseClicked(MouseEvent e) {
 		generator.switchValue();
 	}
-
-	@Override
 	public void mouseEntered(MouseEvent e) {}
-
-	@Override
 	public void mouseExited(MouseEvent e) {}
-
-	@Override
 	public void mousePressed(MouseEvent e) {}
-
-	@Override
 	public void mouseReleased(MouseEvent e) {}
 	
-	
-
 }

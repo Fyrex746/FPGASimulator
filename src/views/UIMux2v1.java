@@ -1,11 +1,9 @@
 package views;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Polygon;
 
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import model.Mux2v1;
@@ -13,13 +11,15 @@ import model.Observator;
 
 public class UIMux2v1 extends JPanel implements Observator{
 
+	//Properties
 	private final Mux2v1 mux;
 	public static final int height = 80;
 	public static final int width = 25;
 	private static final int ratio = 50; //it is a percentage between left and right height
-	private final Polygon polygon;
+	private static Polygon polygon;
 	
 	
+	//Constructors
 	public UIMux2v1() {
 		this(new Mux2v1() );
 	}
@@ -38,6 +38,8 @@ public class UIMux2v1 extends JPanel implements Observator{
 		polygon = new  Polygon(x, y, x.length);
 	}
 
+	
+	//Graphics
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawPolygon(polygon);
@@ -45,13 +47,18 @@ public class UIMux2v1 extends JPanel implements Observator{
 		g.drawString("1", 3, (int) (0.75*(double) height) );
 	}
 	
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
 	
+	//Get
 	public Mux2v1 getMux() {
 		return mux;
 	}
+	
+	
+	//Observator
+	@Override
+	public void update() {
+		repaint();
+	}
+	
+	
 }

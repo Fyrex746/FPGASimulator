@@ -15,6 +15,7 @@ public class Lut3v1 implements Observator{
 	//Constructor
 	public Lut3v1() {
 		table = new TruthTable();
+		table.addObservator(this);
 	}
 	
 	//Method
@@ -41,7 +42,6 @@ public class Lut3v1 implements Observator{
 	
 	
 	//Observer pattern
-	@Override
 	public void update() {
 		calculateOutput();
 	}

@@ -16,8 +16,8 @@ import model.Observator;
 
 public class UILut3v1 extends JPanel implements Observator, MouseListener{
 
+	//Properties
 	private Lut3v1 lut;
-	
 	private static final int cellheight = 20;
 	private static final int leftCellWidth = 50;
 	private static final int rightCellWidth = 20;
@@ -26,6 +26,7 @@ public class UILut3v1 extends JPanel implements Observator, MouseListener{
 	
 	
 	
+	//Constructors
 	public UILut3v1(){
 		this(new Lut3v1() );
 	}
@@ -40,13 +41,16 @@ public class UILut3v1 extends JPanel implements Observator, MouseListener{
 		setBorder(BorderFactory.createLineBorder(Color.black));
 	}
 	
+	
+	//Graphics
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawLine(leftCellWidth, 0, leftCellWidth, height);
+		g.drawLine(leftCellWidth, 0, leftCellWidth, height); 	//Draw column separator
 		for (int i=1; i<8; i++) {
-			g.drawLine(0, cellheight*i, width-1, cellheight*i);
+			g.drawLine(0, cellheight*i, width-1, cellheight*i); //Draw row separator
 		}
 		for(int i=0; i<8; i++){
+			//Fill the table
 			String inputs = Integer.toBinaryString(8 | i).substring(1);
 			String output = lut.getTruthTable().getOutputForInputs(inputs);
 			g.drawString(inputs, 15, cellheight*(i+1)-5 );
@@ -54,12 +58,14 @@ public class UILut3v1 extends JPanel implements Observator, MouseListener{
 		}
 	}
 	
+	
+	//Observer
 	public void update(){
 		repaint();
 	}
 
 	
-	@Override
+	//Mouse Listener
 	public void mouseClicked(MouseEvent e) {
 		int x = e.getX();
 		int y = e.getY();
@@ -69,7 +75,6 @@ public class UILut3v1 extends JPanel implements Observator, MouseListener{
 			lut.getTruthTable().switchOutputForInputs(bin);
 		}
 	}
-
 	public void mouseEntered(MouseEvent e) {}
 	public void mouseExited(MouseEvent e) {}
 	public void mousePressed(MouseEvent e) {}

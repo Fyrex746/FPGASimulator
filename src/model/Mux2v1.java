@@ -68,15 +68,12 @@ public class Mux2v1 implements Observable{
 	
 	//Observable pattern
 	private ArrayList<Observator> observators = new ArrayList<Observator>();
-
 	public void addObservator(Observator o) {
 		observators.add(o);
 	}
-
 	public void deleteObservator(Observator o) {
 		observators.remove(o);
 	}
-
 	public void notifyObservator() {
 		for(Observator o: observators) {
 			o.update();

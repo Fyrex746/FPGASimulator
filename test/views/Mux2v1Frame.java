@@ -59,11 +59,9 @@ public class Mux2v1Frame extends JFrame implements Observator{
 		g1.addObservator(this);
 		g2.addObservator(this);
 		g3.addObservator(this);
-		mux.addObservator(this);
 		
 		//update UI
 		update();
-		repaint();
 	}
 	
 	public static void main(String[] args) {

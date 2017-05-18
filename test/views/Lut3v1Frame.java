@@ -49,19 +49,18 @@ public class Lut3v1Frame extends JFrame implements Observator{
 		contentPanel.setLayout(null);
 		uig1.setBounds(50, 20,UIGenerator.width, UIGenerator.height);
 		uig2.setBounds(50, 60,UIGenerator.width, UIGenerator.height);
+		uig3.setBounds(50, 100,UIGenerator.width, UIGenerator.height);
 		uilut.setBounds(100, 10,UILut3v1.width, UILut3v1.height);
-		uig3.setBounds(102, 120,UIGenerator.width, UIGenerator.height);
-		uir.setBounds(150, 40,UIReceptor.width, UIReceptor.height);
+		uir.setBounds(200, 60,UIReceptor.width, UIReceptor.height);
 		
 		//Add Observer
 		g1.addObservator(this);
 		g2.addObservator(this);
 		g3.addObservator(this);
-		lut.addObservator(this);
+		lut.getTruthTable().addObservator(this);
 		
 		//update UI
 		update();
-		repaint();
 	}
 
 	public static void main(String[] args) {
@@ -72,12 +71,9 @@ public class Lut3v1Frame extends JFrame implements Observator{
 	@Override
 	public void update() {
 		String inputs = g1.getValue() + g2.getValue() + g3.getValue();
-		try {
-			lut.setInputs("000");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		lut.setInputs(inputs);
 		r.setValue(lut.getOutput());
+		repaint();
 	}
 
 }

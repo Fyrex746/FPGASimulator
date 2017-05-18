@@ -7,8 +7,11 @@ public class TruthTable implements Observable{
 	// input size 	= 3
 	// output size 	= 1
 
+	//Properties
 	private HashMap<String,String> table;
 	
+	
+	//Constructor
 	public TruthTable() {
 		table = new HashMap<String,String>(8);
 		for (int i = 0; i < 8; i++) {
@@ -17,6 +20,7 @@ public class TruthTable implements Observable{
 		}
 	}
 	
+	//Get Set
 	public String getOutputForInputs(String inputs) {
 		return table.get(inputs);
 	}
@@ -26,6 +30,12 @@ public class TruthTable implements Observable{
 		notifyObservator();
 	}
 	
+	public HashMap<String, String> getHashMap() {
+		return table;
+	}
+	
+	
+	//Method
 	public void switchOutputForInputs(String inputs){
 		if(table.get(inputs) == "1"){
 			table.put(inputs, "0");
@@ -34,11 +44,6 @@ public class TruthTable implements Observable{
 		}
 		notifyObservator();
 	}
-	
-	public HashMap<String, String> getHashMap() {
-		return table;
-	}
-
 	
 	
 	//Observable pattern
