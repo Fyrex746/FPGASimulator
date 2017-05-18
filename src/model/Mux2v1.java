@@ -66,7 +66,7 @@ public class Mux2v1 implements Observable{
 	
 	
 	
-	//Observer pattern
+	//Observable pattern
 	private ArrayList<Observator> observators = new ArrayList<Observator>();
 
 	public void addObservator(Observator o) {

@@ -1,8 +1,9 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class TruthTable{
+public class TruthTable implements Observable{
 	// input size 	= 3
 	// output size 	= 1
 
@@ -22,6 +23,7 @@ public class TruthTable{
 	
 	public void setOutputForInputs(String inputs, String output) {
 		table.put(inputs, output);
+		notifyObservator();
 	}
 	
 	public void switchOutputForInputs(String inputs){
@@ -30,10 +32,26 @@ public class TruthTable{
 		}else{
 			table.put(inputs, "1");
 		}
+		notifyObservator();
 	}
 	
-	public HashMap<String, String> getTruthTable() {
+	public HashMap<String, String> getHashMap() {
 		return table;
 	}
 
+	
+	
+	//Observable pattern
+	private ArrayList<Observator> observators = new ArrayList<Observator>();
+	public void addObservator(Observator o) {
+		observators.add(o);
+	}
+	public void deleteObservator(Observator o) {
+		observators.remove(o);
+	}
+	public void notifyObservator() {
+		for(Observator o: observators) {
+			o.update();
+		}
+	}
 }

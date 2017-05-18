@@ -2,15 +2,16 @@ package model;
 
 import java.util.ArrayList;
 
-import views.UIGenerator;
-
 public class Generator implements Observable{
 
+	//Properties
 	private String label = "";
 	private String value = "0";
 	
 	
 	
+	
+	//Constructor
 	public Generator() {
 		this("", "0");
 	}
@@ -25,6 +26,10 @@ public class Generator implements Observable{
 	}
 
 	
+	
+	
+	
+	//Method
 	public void switchValue() {
 		if(value=="0") {
 			value = "1";
@@ -35,6 +40,11 @@ public class Generator implements Observable{
 	}
 	
 	
+	
+	
+	
+	
+	//Get, set
 	public String getLabel() {
 		return label;
 	}
@@ -56,17 +66,14 @@ public class Generator implements Observable{
 	
 	
 	
-	//Observer pattern
+	//Observable pattern
 	private ArrayList<Observator> observators = new ArrayList<Observator>();
-
 	public void addObservator(Observator o) {
 		observators.add(o);
 	}
-
 	public void deleteObservator(Observator o) {
 		observators.remove(o);
 	}
-
 	public void notifyObservator() {
 		for(Observator o: observators) {
 			o.update();

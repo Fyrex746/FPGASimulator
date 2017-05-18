@@ -47,9 +47,9 @@ public class UILut3v1 extends JPanel implements Observator, MouseListener{
 			g.drawLine(0, cellheight*i, width-1, cellheight*i);
 		}
 		for(int i=0; i<8; i++){
-			String input = Integer.toBinaryString(8 | i).substring(1);
-			String output = lut.getOutputForInputs(input);
-			g.drawString(input, 15, cellheight*(i+1)-5 );
+			String inputs = Integer.toBinaryString(8 | i).substring(1);
+			String output = lut.getTruthTable().getOutputForInputs(inputs);
+			g.drawString(inputs, 15, cellheight*(i+1)-5 );
 			g.drawString(output, leftCellWidth+6, cellheight*(i+1)-5 );
 		}
 	}
@@ -66,7 +66,7 @@ public class UILut3v1 extends JPanel implements Observator, MouseListener{
 		if(leftCellWidth<=x && x<= width && 0<=y && y<= height){
 			int row = y/cellheight;
 			String bin = Integer.toBinaryString(8 | row).substring(1);
-			lut.switchOutputForInputs(bin);
+			lut.getTruthTable().switchOutputForInputs(bin);
 		}
 	}
 
