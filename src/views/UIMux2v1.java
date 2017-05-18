@@ -14,7 +14,7 @@ public class UIMux2v1 extends JPanel implements Observer{
 	//Properties
 	private final Mux2v1 mux;
 	public static final int height = 80;
-	public static final int width = 25;
+	public static final int width = 20;
 	private static final int ratio = 50; //it is a percentage between left and right height
 	private static Polygon polygon;
 	

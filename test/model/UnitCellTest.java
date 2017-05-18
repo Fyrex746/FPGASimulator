@@ -18,6 +18,8 @@ public class UnitCellTest {
 		uc.setLutInputs("000");
 		uc.getLut().getTruthTable().setOutputForInputs("000", "1");
 		assertEquals(uc.getOutput(),"1");
+		uc.getLut().getTruthTable().switchOutputForInputs("000");
+		assertEquals(uc.getOutput(),"0");
 	}
 	
 	

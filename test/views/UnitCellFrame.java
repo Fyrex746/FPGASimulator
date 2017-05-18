@@ -51,12 +51,12 @@ public class UnitCellFrame extends JFrame implements Observer{
 		
 		//Place component
 		contentPanel.setLayout(null);
-		uig1.setBounds(50, 20,UIGenerator.width, UIGenerator.height);
-		uig2.setBounds(50, 60,UIGenerator.width, UIGenerator.height);
-		uig3.setBounds(50, 100,UIGenerator.width, UIGenerator.height);
-		uiclk.setBounds(50, 140,UIGenerator.width, UIGenerator.height);
-		uiuc.setBounds(100, 10,UIUnitCell.length, UIUnitCell.length);
-		uir.setBounds(500, 80,UIReceptor.width, UIReceptor.height);
+		uig1.setBounds(50, 80,UIGenerator.width, UIGenerator.height);
+		uig2.setBounds(80, 80,UIGenerator.width, UIGenerator.height);
+		uig3.setBounds(110, 80,UIGenerator.width, UIGenerator.height);
+		uiclk.setBounds(80, 120,UIGenerator.width, UIGenerator.height);
+		uiuc.setBounds(150, 10,UIUnitCell.length, UIUnitCell.length);
+		uir.setBounds(500, 100,UIReceptor.width, UIReceptor.height);
 		
 		//Add Observer
 		g1.addObserver(this);
@@ -79,5 +79,9 @@ public class UnitCellFrame extends JFrame implements Observer{
 		uc.setClk(clk.getValue());
 		r.setValue(uc.getOutput());
 		repaint();
+		
+		//For debugging, to delete later
+		System.out.println("lutInputs: " + lutInputs);
+		System.out.println("output: " + uc.getOutput());
 	}
 }
