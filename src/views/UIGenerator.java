@@ -40,7 +40,7 @@ public class UIGenerator extends JPanel implements Observer,MouseListener{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		setBorder(BorderFactory.createLineBorder(Color.black));
-		g.drawString(generator.getValue(), 5, 15);
+		g.drawString(generator.getValue(), 6, 15);
 	}
 
 	

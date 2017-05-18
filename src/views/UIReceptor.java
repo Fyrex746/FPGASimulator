@@ -36,7 +36,7 @@ public class UIReceptor extends JPanel implements Observer{
 	//Graphics
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawString(receptor.getValue(), 5, 15);
+		g.drawString(receptor.getValue(), 6, 15);
 	}
 
 	

@@ -23,7 +23,7 @@ public class Lut3v1 implements Observer,Observable{
 		String newOutput = table.getOutputForInputs(inputs);
 		if(output != newOutput){
 			output = newOutput;
-			//notifyObservator();
+			notifyObserver();
 		}
 	}
 	

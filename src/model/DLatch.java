@@ -35,6 +35,7 @@ public class DLatch implements Observable{
 			q = d;
 		}
 		this.h = h;
+		notifyObserver();
 	}
 
 	public String getQ() {

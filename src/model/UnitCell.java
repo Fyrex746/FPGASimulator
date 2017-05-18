@@ -12,7 +12,7 @@ public class UnitCell implements Observer, Observable{
 	//Components
 	private Lut3v1 lut = new Lut3v1();
 	private Mux2v1 mux = new Mux2v1();
-	private Generator gen = new Generator();
+	private Generator muxSelector = new Generator();
 	private DLatch latch = new DLatch();
 	
 	
@@ -20,7 +20,7 @@ public class UnitCell implements Observer, Observable{
 	public UnitCell() {
 		lut.addObserver(this);
 		mux.addObserver(this);
-		gen.addObserver(this);
+		muxSelector.addObserver(this);
 		latch.addObserver(this);
 		update();
 	}
@@ -33,9 +33,13 @@ public class UnitCell implements Observer, Observable{
 		latch.setH(clk);
 		mux.setA(lut.getOutput());
 		mux.setB(latch.getQ());
-		mux.setS(gen.getValue());
-		output = mux.getO();
-		notifyObserver();
+		mux.setS(muxSelector.getValue());
+		
+		String newOutput = mux.getO();
+		if(output != newOutput){
+			output = newOutput;
+			notifyObserver();
+		}
 	}
 
 
@@ -45,6 +49,7 @@ public class UnitCell implements Observer, Observable{
 	}
 
 	public void setLutInputs(String lutInputs) {
+		if(this.lutInputs == lutInputs){return;}
 		this.lutInputs = lutInputs;
 		update();
 	}
@@ -54,6 +59,7 @@ public class UnitCell implements Observer, Observable{
 	}
 
 	public void setClk(String clk) {
+		if(this.clk == clk){return;}
 		this.clk = clk;
 		update();
 	}
@@ -70,8 +76,8 @@ public class UnitCell implements Observer, Observable{
 		return mux;
 	}
 
-	public Generator getGen() {
-		return gen;
+	public Generator getMuxSelector() {
+		return muxSelector;
 	}
 
 	public DLatch getLatch() {
