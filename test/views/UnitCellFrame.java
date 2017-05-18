@@ -6,34 +6,35 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import model.Generator;
-import model.Mux2v1;
 import model.Observator;
 import model.Receptor;
+import model.UnitCell;
 
-public class Mux2v1Frame extends JFrame implements Observator{
-	
+public class UnitCellFrame extends JFrame implements Observator{
+
 	//Models
-	Mux2v1 mux = new Mux2v1();
+	UnitCell uc = new UnitCell();
 	Generator g1 = new Generator();
 	Generator g2 = new Generator();
 	Generator g3 = new Generator();
+	Generator clk = new Generator();
 	Receptor r = new Receptor();
 	
 	//Views
-	UIMux2v1 uimux = new UIMux2v1(mux);
+	UIUnitCell uiuc = new UIUnitCell(uc);
 	UIGenerator uig1 = new UIGenerator(g1);
 	UIGenerator uig2 = new UIGenerator(g2);
 	UIGenerator uig3 = new UIGenerator(g3);
+	UIGenerator uiclk = new UIGenerator(clk);
 	UIReceptor uir = new UIReceptor(r);
 	
-	
-
-	public Mux2v1Frame() {
+	//Constructor
+	public UnitCellFrame() {
 		super();
 		
 		//config frame
 		setTitle("Test Mux2v1");
-		setSize(500, 500);
+		setSize(1000, 1000);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBackground(Color.white);
@@ -44,37 +45,39 @@ public class Mux2v1Frame extends JFrame implements Observator{
 		contentPanel.add(uig1);
 		contentPanel.add(uig2);
 		contentPanel.add(uig3);
-		contentPanel.add(uimux);
+		contentPanel.add(uiclk);
+		contentPanel.add(uiuc);
 		contentPanel.add(uir);
 		
 		//Place component
 		contentPanel.setLayout(null);
 		uig1.setBounds(50, 20,UIGenerator.width, UIGenerator.height);
 		uig2.setBounds(50, 60,UIGenerator.width, UIGenerator.height);
-		uimux.setBounds(100, 10,UIMux2v1.width, UIMux2v1.height);
-		uig3.setBounds(102, 120,UIGenerator.width, UIGenerator.height);
-		uir.setBounds(150, 40,UIReceptor.width, UIReceptor.height);
+		uig3.setBounds(50, 100,UIGenerator.width, UIGenerator.height);
+		uiclk.setBounds(50, 140,UIGenerator.width, UIGenerator.height);
+		uiuc.setBounds(100, 10,UIUnitCell.length, UIUnitCell.length);
+		uir.setBounds(500, 80,UIReceptor.width, UIReceptor.height);
 		
 		//Add Observer
 		g1.addObservator(this);
 		g2.addObservator(this);
 		g3.addObservator(this);
+		clk.addObservator(this);
 		
 		//update UI
 		update();
 	}
-	
-	public static void main(String[] args) {
-		( new Mux2v1Frame() ).setVisible(true);
-	}
 
+	public static void main(String[] args) {
+		( new UnitCellFrame() ).setVisible(true);
+	}
+	
 	@Override
 	public void update() {
-		mux.setA(g1.getValue());
-		mux.setB(g2.getValue());
-		mux.setS(g3.getValue());
-		r.setValue(mux.getO());
+		String lutInputs = g1.getValue() + g2.getValue() + g3.getValue();
+		uc.setLutInputs(lutInputs);
+		uc.setClk(clk.getValue());
+		r.setValue(uc.getOutput());
 		repaint();
 	}
-
 }

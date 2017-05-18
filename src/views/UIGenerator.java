@@ -32,7 +32,6 @@ public class UIGenerator extends JPanel implements Observator,MouseListener{
 		
 		Dimension d = new Dimension(width, height);
 		setPreferredSize(d);
-		setBorder(BorderFactory.createLineBorder(Color.black));
 		
 	}
 	
@@ -40,6 +39,7 @@ public class UIGenerator extends JPanel implements Observator,MouseListener{
 	//Graphics
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		setBorder(BorderFactory.createLineBorder(Color.black));
 		g.drawString(generator.getValue(), 5, 15);
 	}
 

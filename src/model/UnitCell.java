@@ -1,10 +1,13 @@
 package model;
 
-public class UnitCell implements Observator{
+import java.util.ArrayList;
+
+public class UnitCell implements Observator, Observable{
 
 	//Properties
 	private String lutInputs = "000";
 	private String clk = "0";
+	private String output = "0";
 	
 	//Components
 	private Lut3v1 lut = new Lut3v1();
@@ -28,6 +31,8 @@ public class UnitCell implements Observator{
 		mux.setA(lut.getOutput());
 		mux.setB(latch.getQ());
 		mux.setS(gen.getValue());
+		output = mux.getO();
+		notifyObservator();
 	}
 
 
@@ -49,6 +54,10 @@ public class UnitCell implements Observator{
 		this.clk = clk;
 		update();
 	}
+	
+	public String getOutput() {
+		return output;
+	}
 
 	public Lut3v1 getLut() {
 		return lut;
@@ -64,6 +73,21 @@ public class UnitCell implements Observator{
 
 	public DLatch getLatch() {
 		return latch;
+	}
+	
+	
+	//Observable pattern
+	private ArrayList<Observator> observators = new ArrayList<Observator>();
+	public void addObservator(Observator o) {
+		observators.add(o);
+	}
+	public void deleteObservator(Observator o) {
+		observators.remove(o);
+	}
+	public void notifyObservator() {
+		for(Observator o: observators) {
+			o.update();
+		}
 	}
 
 }
