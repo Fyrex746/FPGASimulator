@@ -6,9 +6,14 @@ import javax.swing.JPanel;
 
 import model.Generator;
 import model.Lut3v1;
-import model.Mux2v1;
 import model.Observer;
 import model.Receptor;
+import modelViews.UIGenerator;
+import modelViews.UILut3v1;
+import modelViews.UIReceptor;
+
+
+
 
 public class Lut3v1Frame extends JFrame implements Observer{
 

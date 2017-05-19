@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import model.Observer;
+import modelViews.UIGenerator;
+import modelViews.UIReceptor;
 
 public class ReceptorFrame extends JFrame implements Observer{
 

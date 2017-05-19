@@ -9,6 +9,9 @@ import model.Generator;
 import model.Observer;
 import model.Receptor;
 import model.UnitCell;
+import modelViews.UIGenerator;
+import modelViews.UIReceptor;
+import modelViews.UIUnitCell;
 
 public class UnitCellFrame extends JFrame implements Observer{
 

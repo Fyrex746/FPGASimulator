@@ -1,4 +1,4 @@
-package views;
+package modelViews;
 
 import model.Observer;
 import model.Receptor;

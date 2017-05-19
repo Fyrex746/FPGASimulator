@@ -10,6 +10,9 @@ import model.Generator;
 import model.Mux2v1;
 import model.Observer;
 import model.Receptor;
+import modelViews.UIDLatch;
+import modelViews.UIGenerator;
+import modelViews.UIReceptor;
 
 public class DLatchFrame extends JFrame implements Observer{
 
