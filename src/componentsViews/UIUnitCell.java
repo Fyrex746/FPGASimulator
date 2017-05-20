@@ -1,4 +1,4 @@
-package modelViews;
+package componentsViews;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -6,8 +6,8 @@ import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import model.Observer;
-import model.UnitCell;
+import componentsModels.Observer;
+import componentsModels.UnitCell;
 
 public class UIUnitCell extends JPanel implements Observer{
 

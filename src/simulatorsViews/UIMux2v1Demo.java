@@ -1,4 +1,4 @@
-package modelDemoViews;
+package simulatorsViews;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -6,12 +6,12 @@ import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import model.Observer;
-import modelViews.UIGenerator;
-import modelViews.UIMux2v1;
-import modelViews.UIReceptor;
+import componentsModels.Observer;
+import componentsViews.UIGenerator;
+import componentsViews.UIMux2v1;
+import componentsViews.UIReceptor;
+import simulatorsModels.Mux2v1Demo;
 import sun.awt.SunGraphicsCallback.PaintHeavyweightComponentsCallback;
-import modelDemo.Mux2v1Demo;
 
 
 

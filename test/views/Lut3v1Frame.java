@@ -4,13 +4,13 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import model.Generator;
-import model.Lut3v1;
-import model.Observer;
-import model.Receptor;
-import modelViews.UIGenerator;
-import modelViews.UILut3v1;
-import modelViews.UIReceptor;
+import componentsModels.Generator;
+import componentsModels.Lut3v1;
+import componentsModels.Observer;
+import componentsModels.Receptor;
+import componentsViews.UIGenerator;
+import componentsViews.UILut3v1;
+import componentsViews.UIReceptor;
 
 
 

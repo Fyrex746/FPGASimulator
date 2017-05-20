@@ -1,4 +1,4 @@
-package modelViews;
+package componentsViews;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -6,8 +6,8 @@ import java.awt.Polygon;
 
 import javax.swing.JPanel;
 
-import model.Mux2v1;
-import model.Observer;
+import componentsModels.Mux2v1;
+import componentsModels.Observer;
 
 public class UIMux2v1 extends JPanel implements Observer{
 

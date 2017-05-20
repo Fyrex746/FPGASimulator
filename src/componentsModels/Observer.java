@@ -1,4 +1,4 @@
-package model;
+package componentsModels;
 
 public interface Observer {
 	public void update();

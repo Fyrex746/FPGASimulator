@@ -1,7 +1,9 @@
-package model;
+package componentsModels;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+
+import componentsModels.Mux2v1;
 
 public class Mux2v1Test {
 

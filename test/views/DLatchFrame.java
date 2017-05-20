@@ -5,14 +5,14 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import model.DLatch;
-import model.Generator;
-import model.Mux2v1;
-import model.Observer;
-import model.Receptor;
-import modelViews.UIDLatch;
-import modelViews.UIGenerator;
-import modelViews.UIReceptor;
+import componentsModels.DLatch;
+import componentsModels.Generator;
+import componentsModels.Mux2v1;
+import componentsModels.Observer;
+import componentsModels.Receptor;
+import componentsViews.UIDLatch;
+import componentsViews.UIGenerator;
+import componentsViews.UIReceptor;
 
 public class DLatchFrame extends JFrame implements Observer{
 

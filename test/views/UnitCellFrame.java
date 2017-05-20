@@ -5,13 +5,13 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import model.Generator;
-import model.Observer;
-import model.Receptor;
-import model.UnitCell;
-import modelViews.UIGenerator;
-import modelViews.UIReceptor;
-import modelViews.UIUnitCell;
+import componentsModels.Generator;
+import componentsModels.Observer;
+import componentsModels.Receptor;
+import componentsModels.UnitCell;
+import componentsViews.UIGenerator;
+import componentsViews.UIReceptor;
+import componentsViews.UIUnitCell;
 
 public class UnitCellFrame extends JFrame implements Observer{
 

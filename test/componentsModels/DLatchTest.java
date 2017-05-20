@@ -1,8 +1,10 @@
-package model;
+package componentsModels;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import componentsModels.DLatch;
 
 public class DLatchTest {
 

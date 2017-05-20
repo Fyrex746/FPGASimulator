@@ -1,4 +1,4 @@
-package modelViews;
+package componentsViews;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,8 +7,8 @@ import java.awt.Graphics;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import model.DLatch;
-import model.Observer;
+import componentsModels.DLatch;
+import componentsModels.Observer;
 
 public class UIDLatch extends JPanel implements Observer{
 	

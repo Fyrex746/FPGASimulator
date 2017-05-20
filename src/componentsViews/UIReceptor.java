@@ -1,7 +1,4 @@
-package modelViews;
-
-import model.Observer;
-import model.Receptor;
+package componentsViews;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,6 +6,9 @@ import java.awt.Graphics;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+
+import componentsModels.Observer;
+import componentsModels.Receptor;
 
 public class UIReceptor extends JPanel implements Observer{
 	

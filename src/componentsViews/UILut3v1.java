@@ -1,4 +1,4 @@
-package modelViews;
+package componentsViews;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,8 +9,8 @@ import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import model.Lut3v1;
-import model.Observer;
+import componentsModels.Lut3v1;
+import componentsModels.Observer;
 
 
 

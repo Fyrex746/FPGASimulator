@@ -1,12 +1,12 @@
-package modelDemo;
+package simulatorsModels;
 
 import java.util.ArrayList;
 
-import model.Generator;
-import model.Mux2v1;
-import model.Observable;
-import model.Observer;
-import model.Receptor;
+import componentsModels.Generator;
+import componentsModels.Mux2v1;
+import componentsModels.Observable;
+import componentsModels.Observer;
+import componentsModels.Receptor;
 
 public class Mux2v1Demo implements Observable, Observer{
 	

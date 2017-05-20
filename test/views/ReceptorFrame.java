@@ -5,9 +5,9 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import model.Observer;
-import modelViews.UIGenerator;
-import modelViews.UIReceptor;
+import componentsModels.Observer;
+import componentsViews.UIGenerator;
+import componentsViews.UIReceptor;
 
 public class ReceptorFrame extends JFrame implements Observer{
 

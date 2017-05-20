@@ -1,7 +1,4 @@
-package modelViews;
-
-import model.Generator;
-import model.Observer;
+package componentsViews;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,6 +8,9 @@ import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+
+import componentsModels.Generator;
+import componentsModels.Observer;
 
 public class UIGenerator extends JPanel implements Observer,MouseListener{
 	

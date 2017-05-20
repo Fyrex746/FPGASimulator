@@ -4,7 +4,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import modelViews.UIGenerator;
+import componentsViews.UIGenerator;
 
 public class GeneratorFrame extends JFrame{
 
