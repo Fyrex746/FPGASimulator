@@ -8,7 +8,7 @@ import componentsModels.Observable;
 import componentsModels.Observer;
 import componentsModels.Receptor;
 
-public class Mux2v1Demo implements Observable, Observer{
+public class Mux2v1Simulator implements Observable, Observer{
 	
 	//Components
 	private Generator g1 = new Generator();
@@ -18,7 +18,7 @@ public class Mux2v1Demo implements Observable, Observer{
 	private Receptor r = new Receptor();
 	
 	//Constructor
-	public Mux2v1Demo(){
+	public Mux2v1Simulator(){
 		g1.addObserver(this);
 		g2.addObserver(this);
 		g3.addObserver(this);

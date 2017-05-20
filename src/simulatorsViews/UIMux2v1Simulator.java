@@ -1,8 +1,10 @@
 package simulatorsViews;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -10,18 +12,18 @@ import componentsModels.Observer;
 import componentsViews.UIGenerator;
 import componentsViews.UIMux2v1;
 import componentsViews.UIReceptor;
-import simulatorsModels.Mux2v1Demo;
+import simulatorsModels.Mux2v1Simulator;
 import sun.awt.SunGraphicsCallback.PaintHeavyweightComponentsCallback;
 
 
 
-public class UIMux2v1Demo extends JPanel implements Observer{
+public class UIMux2v1Simulator extends JPanel implements Observer{
 
 	public static final int height = 200;
 	public static final int width = 200;
 	
 	//Model
-	private Mux2v1Demo muxDemo;
+	private Mux2v1Simulator muxSimulator;
 	
 	//SubViews
 	private UIGenerator uig1;
@@ -31,17 +33,18 @@ public class UIMux2v1Demo extends JPanel implements Observer{
 	private UIReceptor uir;
 	
 	//Constructor
-	public UIMux2v1Demo(){
-		this(new Mux2v1Demo());
+	public UIMux2v1Simulator(){
+		this(new Mux2v1Simulator());
 	}
 	
-	public UIMux2v1Demo(Mux2v1Demo muxDemo){
-		this.muxDemo = muxDemo;
+	public UIMux2v1Simulator(Mux2v1Simulator muxDemo){
+		this.muxSimulator = muxDemo;
 		muxDemo.addObserver(this);
 		
 		//JPanel config
 		Dimension d = new Dimension(width, height);
 		setPreferredSize(d);
+		setBorder(BorderFactory.createLineBorder(Color.white));
 		
 		//Init subviews
 		uimux = new UIMux2v1(muxDemo.getMux());
@@ -66,6 +69,8 @@ public class UIMux2v1Demo extends JPanel implements Observer{
 		uir.setBounds(100, 90,UIReceptor.width, UIReceptor.height);
 	}
 	
+	
+	//Graphics
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		g.drawLine(30, 80, 50, 80);
@@ -74,6 +79,13 @@ public class UIMux2v1Demo extends JPanel implements Observer{
 		g.drawLine(70, 100, 100, 100);
 	}
 	
+	
+	//Get
+	public Mux2v1Simulator getMuxSimulator() {
+		return muxSimulator;
+	}
+	
+	
 	//Observer
 	public void update() {
 		repaint();
@@ -81,12 +93,25 @@ public class UIMux2v1Demo extends JPanel implements Observer{
 	
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
-		frame.setTitle("Test Mux2v1");
+		frame.setTitle("Mux2v1 Simulator");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(UIMux2v1Demo.width, UIMux2v1Demo.height);
+		
+		int j = 5;
+		int i = 2;
+		int n = i*j;
+		int interspace = 20;
+		frame.setSize(UIMux2v1Simulator.width * j + interspace*(j+1), UIMux2v1Simulator.height * i + interspace*(i+1));
 		frame.setResizable(false);
-		frame.setContentPane(new UIMux2v1Demo());
+		
+		JPanel contentPanel = new JPanel();
+		for (int c = 0; c < n; c++) {
+			contentPanel.add(new UIMux2v1Simulator());
+		}
+		
+		frame.setContentPane(contentPanel);
 		frame.setVisible(true);
 	}
+
+
 	
 }
