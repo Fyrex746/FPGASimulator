@@ -14,6 +14,7 @@ public class ReceptorSimulator implements Observer, Observable {
 
 	public ReceptorSimulator(){
 		g.addObserver(this);
+		update();
 	}
 	
 	//Observer
