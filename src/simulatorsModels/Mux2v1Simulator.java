@@ -51,6 +51,7 @@ public class Mux2v1Simulator implements Observable, Observer{
 		mux.setS(g3.getValue());
 		r.setValue(mux.getO());
 		notifyObserver();
+		System.out.println("Model update:	" + this.getClass());
 	}
 	
 	//Observable pattern

@@ -62,6 +62,7 @@ public class UILut3v1 extends JPanel implements Observer, MouseListener{
 	//Observer
 	public void update(){
 		repaint();
+		System.out.println("UI update:	" + this.getClass());
 	}
 
 	

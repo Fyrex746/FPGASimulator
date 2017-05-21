@@ -59,17 +59,18 @@ public class UILut3v1Simulator extends JPanel implements Observer{
 		
 		//Place component
 		setLayout(null);
-		uig1.setBounds(50, 20,UIGenerator.width, UIGenerator.height);
+		uig1.setBounds(20, 60,UIGenerator.width, UIGenerator.height);
 		uig2.setBounds(50, 60,UIGenerator.width, UIGenerator.height);
-		uig3.setBounds(50, 100,UIGenerator.width, UIGenerator.height);
-		uilut.setBounds(100, 10,UILut3v1.width, UILut3v1.height);
-		uir.setBounds(200, 60,UIReceptor.width, UIReceptor.height);
+		uig3.setBounds(80, 60,UIGenerator.width, UIGenerator.height);
+		uilut.setBounds(150, 10,UILut3v1.width, UILut3v1.height);
+		uir.setBounds(250, 60,UIReceptor.width, UIReceptor.height);
 	}
 
 
 	//Observer
 	public void update() {
 		repaint();
+		System.out.println("UI update:	" + this.getClass());
 	}
 	
 	//Display Simulator

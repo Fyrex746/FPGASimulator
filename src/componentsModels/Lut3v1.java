@@ -23,8 +23,8 @@ public class Lut3v1 implements Observer,Observable{
 		String newOutput = table.getOutputForInputs(inputs);
 		if(output != newOutput){
 			output = newOutput;
-			notifyObserver();
 		}
+		notifyObserver();
 	}
 	
 
@@ -45,12 +45,15 @@ public class Lut3v1 implements Observer,Observable{
 	}
 
 	
-	
-	//Observer pattern
+	//Observer
+	private Boolean updadingInProgress = false;
 	public void update() {
+		if(updadingInProgress){return;}
+		updadingInProgress = true;
 		calculateOutput();
+		updadingInProgress = false;
+		System.out.println("Model update:	" + this.getClass());
 	}
-	
 	
 	
 	

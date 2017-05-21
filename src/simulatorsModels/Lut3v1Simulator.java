@@ -45,13 +45,20 @@ public class Lut3v1Simulator implements Observer, Observable{
 		return r;
 	}
 
-
-
+	
 	//Observer
+	private Boolean updadingInProgress = false;
 	public void update() {
+		if(updadingInProgress){return;}
+		updadingInProgress = true;
+		
 		String inputs = g1.getValue() + g2.getValue() + g3.getValue();
 		lut.setInputs(inputs);
 		r.setValue(lut.getOutput());
+		notifyObserver();
+		System.out.println("Model update:	" + this.getClass());
+		
+		updadingInProgress = false;
 	}
 	
 	//Observable pattern

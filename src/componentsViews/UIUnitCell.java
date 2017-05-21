@@ -56,8 +56,15 @@ public class UIUnitCell extends JPanel implements Observer{
 		
 	}
 	
-	//Observator
+	
+	//Get
+	public UnitCell getUc() {
+		return uc;
+	}
+
+	//Observer
 	public void update() {
 		repaint();
+		System.out.println("UI update:	" + this.getClass());
 	}
 }

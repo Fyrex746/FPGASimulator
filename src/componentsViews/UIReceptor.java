@@ -45,6 +45,7 @@ public class UIReceptor extends JPanel implements Observer{
 	//Observator
 	public void update() {
 		repaint();
+		System.out.println("UI update:	" + this.getClass());
 	}
 	
 	

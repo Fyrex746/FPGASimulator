@@ -58,6 +58,7 @@ public class UIMux2v1 extends JPanel implements Observer{
 	@Override
 	public void update() {
 		repaint();
+		System.out.println("UI update:	" + this.getClass());
 	}
 	
 	

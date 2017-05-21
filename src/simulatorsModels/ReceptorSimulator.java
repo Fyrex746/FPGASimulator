@@ -20,6 +20,7 @@ public class ReceptorSimulator implements Observer, Observable {
 	//Observer
 	public void update() {
 		r.setValue(g.getValue());
+		System.out.println("Model update:	" + this.getClass());
 	}
 	
 	//Get

@@ -89,6 +89,7 @@ public class UIMux2v1Simulator extends JPanel implements Observer{
 	//Observer
 	public void update() {
 		repaint();
+		System.out.println("UI update:	" + this.getClass());
 	}
 	
 	public static void main(String[] args) {

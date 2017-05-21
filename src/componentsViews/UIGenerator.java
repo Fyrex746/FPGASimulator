@@ -53,6 +53,7 @@ public class UIGenerator extends JPanel implements Observer,MouseListener{
 	//Observator
 	public void update() {
 		repaint();
+		System.out.println("UI update:	" + this.getClass());
 	}
 
 	

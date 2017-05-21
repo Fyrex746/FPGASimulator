@@ -39,9 +39,19 @@ public class UIDLatch extends JPanel implements Observer{
 		g.drawString("Q", 25, 15);
 	}
 	
+	
+	//Get
+	public DLatch getLatch() {
+		return latch;
+	}
+	
+	
 	//OBserver
 	public void update(){
 		repaint();
+		System.out.println("UI update:	" + this.getClass());
 	}
+
+
 
 }
