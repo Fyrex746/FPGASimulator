@@ -13,7 +13,6 @@ import componentsViews.UIGenerator;
 import componentsViews.UIMux2v1;
 import componentsViews.UIReceptor;
 import simulatorsModels.Mux2v1Simulator;
-import sun.awt.SunGraphicsCallback.PaintHeavyweightComponentsCallback;
 
 
 
