@@ -34,12 +34,9 @@ public class UnitCell implements Observer, Observable{
 		mux.setA(lut.getOutput());
 		mux.setB(latch.getQ());
 		mux.setS(muxSelector.getValue());
-		
-		String newOutput = mux.getO();
-		if(output != newOutput){
-			output = newOutput;
-			notifyObserver();
-		}
+		output = mux.getO();
+		System.out.println("Model update:	" + this.getClass());
+		notifyObserver();
 	}
 
 
