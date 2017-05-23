@@ -7,7 +7,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.SwingUtilities;
 
 import componentsModels.Generator;
 import componentsModels.Observer;
@@ -18,11 +21,14 @@ public class UIGenerator extends JPanel implements Observer,MouseListener{
 	private final Generator generator;
 	public static final int height = 20;
 	public static final int width = 20;
+	JPopupMenu jpm = new JPopupMenu("Generator");
+	JMenuItem jmi = new JMenuItem("Actionless entry");
 	
 	
 	//Constructors
 	public UIGenerator() {
 		this(new Generator());
+		jpm.add(jmi);
 	}
 	
 	public UIGenerator(Generator generator) {
@@ -58,8 +64,15 @@ public class UIGenerator extends JPanel implements Observer,MouseListener{
 
 	
 	//Mouse Listener
+	
 	public void mouseClicked(MouseEvent e) {
-		generator.switchValue();
+		if(SwingUtilities.isRightMouseButton(e)) {
+			System.out.println("Rigth Click");
+			//jpm.show(e.getComponent().getParent(), e.getX(), e.getY());
+		}else {
+			System.out.println("Left Click");
+			generator.switchValue();
+		}
 	}
 	public void mouseEntered(MouseEvent e) {}
 	public void mouseExited(MouseEvent e) {}
