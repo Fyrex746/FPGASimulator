@@ -56,6 +56,7 @@ public class UIUnitCellSimulator extends JPanel implements Observer{
 		add(uig1);
 		add(uig2);
 		add(uig3);
+		add(uiclk);
 		add(uiuc);
 		add(uir);
 		

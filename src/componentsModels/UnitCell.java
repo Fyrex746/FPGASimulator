@@ -24,10 +24,13 @@ public class UnitCell implements Observer, Observable{
 		latch.addObserver(this);
 		update();
 	}
-
-
+	
 	//Observer
+	private Boolean updadingInProgress = false;
 	public void update() {
+		if(updadingInProgress){return;}
+		updadingInProgress = true;
+		
 		lut.setInputs(lutInputs);
 		latch.setD(lut.getOutput());
 		latch.setH(clk);
@@ -35,6 +38,8 @@ public class UnitCell implements Observer, Observable{
 		mux.setB(latch.getQ());
 		mux.setS(muxSelector.getValue());
 		output = mux.getO();
+		
+		updadingInProgress = false;
 		System.out.println("Model update:	" + this.getClass());
 		notifyObserver();
 	}
