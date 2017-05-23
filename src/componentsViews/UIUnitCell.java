@@ -25,10 +25,10 @@ public class UIUnitCell extends JPanel implements Observer{
 	
 	
 	//UIComponent
-	private UIMux2v1 uimux = new UIMux2v1();
-	private UILut3v1 uilut = new UILut3v1();
-	private UIDLatch uilatch = new UIDLatch();
-	private UIGenerator uigen = new UIGenerator();
+	private UIMux2v1 uimux;
+	private UILut3v1 uilut;
+	private UIDLatch uilatch;
+	private UIGenerator uigen;
 	
 	//Constructor
 	public UIUnitCell() {
@@ -39,15 +39,24 @@ public class UIUnitCell extends JPanel implements Observer{
 		this.uc = uc;
 		uc.addObserver(this);
 		
+		//Init subviews
+		uimux = new UIMux2v1(uc.getMux());
+		uilut = new UILut3v1(uc.getLut());
+		uilatch = new UIDLatch(uc.getLatch());
+		uigen = new UIGenerator(uc.getMuxSelector());
+		
+		//JPanel config
 		Dimension d = new Dimension(length, length);
 		setPreferredSize(d);
 		setBorder(BorderFactory.createLineBorder(Color.green));
 		
+		//Add subviews
 		add(uimux);
 		add(uilut);
 		add(uilatch);
 		add(uigen);
 		
+		//Place subviews
 		setLayout(null);
 		uimux.setBounds(xmux, ymux, UIMux2v1.width, UIMux2v1.height);
 		uilut.setBounds(xlut, ylut, UILut3v1.width, UILut3v1.height);
